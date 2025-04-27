@@ -7,5 +7,6 @@ fuzz_target!(|data: &[u8]| {
     let mut resp = httparse::Request::new(&mut headers);
     let _ = httparse::ParserConfig::default()
         .allow_multiple_spaces_in_request_line_delimiters(true)
+        .allow_space_before_first_header_name(true)
         .parse_request(&mut resp, data);
 });
